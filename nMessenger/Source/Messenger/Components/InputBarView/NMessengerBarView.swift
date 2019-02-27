@@ -154,11 +154,11 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
             
             let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
             
-            var textWidth: CGFloat = UIEdgeInsetsInsetRect(textView.frame, textView.textContainerInset).width
+            var textWidth: CGFloat = textView.frame.inset(by: textView.textContainerInset).width
             
             textWidth -= 2.0 * textView.textContainer.lineFragmentPadding
             
-            let boundingRect: CGRect = newText.boundingRect(with: CGSize(width: textWidth, height: 0), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSAttributedStringKey.font: textView.font!], context: nil)
+            let boundingRect: CGRect = newText.boundingRect(with: CGSize(width: textWidth, height: 0), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSAttributedString.Key.font: textView.font!], context: nil)
             
             let numberOfLines = boundingRect.height / textView.font!.lineHeight;
             

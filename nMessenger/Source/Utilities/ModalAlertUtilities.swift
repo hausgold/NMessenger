@@ -42,7 +42,7 @@ open class ModalAlertUtilities {
             alert.dismiss(animated: true, completion: nil)
         }
         let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (alertAction) in
-            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.openURL(appSettings)
             }
         }
@@ -65,7 +65,7 @@ open class ModalAlertUtilities {
             alert.dismiss(animated: true, completion: nil)
         }
         let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (alertAction) in
-            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.openURL(appSettings)
             }
         }
@@ -88,7 +88,7 @@ open class ModalAlertUtilities {
             alert.dismiss(animated: true, completion: nil)
         }
         let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (alertAction) in
-            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.openURL(appSettings)
             }
         }

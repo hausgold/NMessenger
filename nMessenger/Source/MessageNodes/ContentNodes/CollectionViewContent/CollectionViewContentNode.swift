@@ -299,15 +299,15 @@ open class CollectionViewContentNode: ContentNode,ASCollectionDelegate,ASCollect
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if self.collectionViewNumberOfRows != 1
         {
-            return UIEdgeInsetsMake(0, 0, 0, 0)
+            return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         }
         else
         {
             if section != (self.collectionNodesDataSource!.count-1)
             {
-                return UIEdgeInsetsMake(0, 0, 0, self.spacingBetweenCells)
+                return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: self.spacingBetweenCells)
             }
-            return UIEdgeInsetsMake(0, 0, 0, 0)
+            return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
     

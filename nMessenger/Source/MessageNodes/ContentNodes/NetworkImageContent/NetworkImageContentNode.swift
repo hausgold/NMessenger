@@ -102,7 +102,7 @@ open class NetworkImageContentNode: ContentNode,ASNetworkImageNodeDelegate {
      Override method from superclass
      */
     open override func messageNodeLongPressSelector(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.began {
+        if recognizer.state == UIGestureRecognizer.State.began {
             
             let touchLocation = recognizer.location(in: view)
             if self.networkImageMessageNode.frame.contains(touchLocation) {

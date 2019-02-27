@@ -52,7 +52,7 @@ open class MessageNode: GeneralMessengerCell {
     /**
      Spacing around the avatar. Defaults to UIEdgeInsetsMake(0, 0, 0, 10)
      */
-    open var avatarInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10) {
+    open var avatarInsets: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 10) {
         didSet {
             self.setNeedsLayout()
         }

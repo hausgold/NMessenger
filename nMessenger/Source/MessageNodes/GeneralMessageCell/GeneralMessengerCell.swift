@@ -20,7 +20,7 @@ open class GeneralMessengerCell: ASCellNode {
     
     // MARK: Public Variables
     /** UIEdgeInsets for cell*/
-    open var cellPadding: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+    open var cellPadding: UIEdgeInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     /** UIViewController that holds the cell. Allows the cell the present View Controllers*/
     open weak var currentViewController: UIViewController?
     /** The current table in which this node resides*/
@@ -36,7 +36,7 @@ open class GeneralMessengerCell: ASCellNode {
     public override init() {
         super.init()
         selectionStyle = .none
-        cellPadding = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        cellPadding = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
     /**
      Initialiser for the cell

@@ -112,7 +112,7 @@ open class NMessenger: UIView {
         
         messengerNode.setTuningParameters(ASRangeTuningParameters(leadingBufferScreenfuls: 2, trailingBufferScreenfuls: 1), for: .display)
         
-        messengerNode.view.separatorStyle = UITableViewCellSeparatorStyle.none
+        messengerNode.view.separatorStyle = UITableViewCell.SeparatorStyle.none
         messengerNode.view.allowsSelection = false
         messengerNode.view.showsVerticalScrollIndicator = false
         messengerNode.automaticallyAdjustsContentOffset = true
@@ -125,7 +125,7 @@ open class NMessenger: UIView {
         super.layoutSubviews()
         //update frame
         messengerNode.frame = self.bounds
-        messengerNode.view.separatorStyle = UITableViewCellSeparatorStyle.none
+        messengerNode.view.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     //MARK: Adding messages
@@ -146,7 +146,7 @@ open class NMessenger: UIView {
      message
      - parameter animation: An animation for newly added cell
      */
-    open func addMessage(_ message: GeneralMessengerCell, scrollsToMessage: Bool, withAnimation animation: UITableViewRowAnimation) {
+    open func addMessage(_ message: GeneralMessengerCell, scrollsToMessage: Bool, withAnimation animation: UITableView.RowAnimation) {
         self.addMessages([message], scrollsToMessage: scrollsToMessage, withAnimation: animation)
     }
     
@@ -169,7 +169,7 @@ open class NMessenger: UIView {
      - parameter animation: An animation for newly added cell
      message
      */
-    open func addMessages(_ messages: [GeneralMessengerCell], scrollsToMessage: Bool, withAnimation animation: UITableViewRowAnimation) {
+    open func addMessages(_ messages: [GeneralMessengerCell], scrollsToMessage: Bool, withAnimation animation: UITableView.RowAnimation) {
         self.waitForMessageLock {
             self.addMessages(messages, atIndex: self.state.itemCount, scrollsToMessage: scrollsToMessage, animation: animation, completion:  nil)
         }
@@ -183,7 +183,7 @@ open class NMessenger: UIView {
      message
      - parameter completion: A completion handler
      */
-    open func addMessagesWithBlock(_ messages: [GeneralMessengerCell], scrollsToMessage: Bool, withAnimation animation: UITableViewRowAnimation, completion: (()->Void)?) {
+    open func addMessagesWithBlock(_ messages: [GeneralMessengerCell], scrollsToMessage: Bool, withAnimation animation: UITableView.RowAnimation, completion: (()->Void)?) {
         self.waitForMessageLock {
             self.addMessages(messages, atIndex: self.state.itemCount, scrollsToMessage: scrollsToMessage, animation: animation, completion:  completion)
         }
@@ -231,7 +231,7 @@ open class NMessenger: UIView {
      - parameter message: the message that should be deleted
      - parameter animation: a row animation for deleting the cell
      */
-    open func removeMessage(_ message: GeneralMessengerCell, animation: UITableViewRowAnimation) {
+    open func removeMessage(_ message: GeneralMessengerCell, animation: UITableView.RowAnimation) {
         self.removeMessages([message], animation: animation)
     }
     
@@ -241,7 +241,7 @@ open class NMessenger: UIView {
      - parameter messages: the messages that should be deleted
      - parameter animation: a row animation for deleting the cell
      */
-    open func removeMessages(_ messages: [GeneralMessengerCell], animation: UITableViewRowAnimation) {
+    open func removeMessages(_ messages: [GeneralMessengerCell], animation: UITableView.RowAnimation) {
         self.removeMessagesWithBlock(messages, animation: animation, completion: nil)
     }
     
@@ -251,7 +251,7 @@ open class NMessenger: UIView {
      - parameter messages: the messages that should be deleted
      - parameter animation: a row animation for deleting the cell
      */
-    open func removeMessagesWithBlock(_ messages: [GeneralMessengerCell], animation: UITableViewRowAnimation, completion: (()->Void)?) {
+    open func removeMessagesWithBlock(_ messages: [GeneralMessengerCell], animation: UITableView.RowAnimation, completion: (()->Void)?) {
         self.waitForMessageLock {
             DispatchQueue.main.async {
                 var indexPaths = [IndexPath]()
@@ -294,7 +294,7 @@ open class NMessenger: UIView {
      - parameter atPosition: The location to scroll to
      - parameter animated: The move is animated or not
      */
-    open func scrollToMessage(_ message: GeneralMessengerCell, atPosition position: UITableViewScrollPosition, animated: Bool) {
+    open func scrollToMessage(_ message: GeneralMessengerCell, atPosition position: UITableView.ScrollPosition, animated: Bool) {
         waitForMessageLock {
             DispatchQueue.main.async {
                 if let indexPath = self.messengerNode.indexPath(for: message) {
@@ -440,7 +440,7 @@ open class NMessenger: UIView {
      - parameter scrollsToMessage: If marked true, the tableview will scroll to the newly added
      message
      */
-    fileprivate func addMessages(_ messages: [GeneralMessengerCell], atIndex index: Int, scrollsToMessage: Bool, animation: UITableViewRowAnimation, completion: (()->Void)?) {
+    fileprivate func addMessages(_ messages: [GeneralMessengerCell], atIndex index: Int, scrollsToMessage: Bool, animation: UITableView.RowAnimation, completion: (()->Void)?) {
         DispatchQueue.main.async {
             if messages.count > 0 {
                 //set the new state
@@ -502,7 +502,7 @@ open class NMessenger: UIView {
      - parameter position: a position to scroll to
      - parameter animated: bool indicating if the scroll should be animated
      */
-    fileprivate func scrollToIndex(_ index: Int, inSection section: Int, atPosition position: UITableViewScrollPosition, animated: Bool) {
+    fileprivate func scrollToIndex(_ index: Int, inSection section: Int, atPosition position: UITableView.ScrollPosition, animated: Bool) {
         let indexPath = (IndexPath(row: index, section: section))
         self.messengerNode.scrollToRow(at: indexPath, at: position, animated: animated)
     }
@@ -555,7 +555,7 @@ open class NMessenger: UIView {
      - parameter animation: an animation to remove the cells
      - parameter completion: closure to signify the end of the remove event
      */
-    fileprivate func removeCells(atIndexes indexes: [IndexPath], animation: UITableViewRowAnimation, completion: (()->Void)?) {
+    fileprivate func removeCells(atIndexes indexes: [IndexPath], animation: UITableView.RowAnimation, completion: (()->Void)?) {
         DispatchQueue.main.async {
             //update the state
             self.state.itemCount -= indexes.count
@@ -579,7 +579,7 @@ open class NMessenger: UIView {
      - parameter startIndex: Where to insert or delete the cells
      - parameter completion: Closure which notifies that the table is done adding cells
      */
-    fileprivate func renderDiff(_ oldState: NMessengerState, startIndex: Int, animation: UITableViewRowAnimation, completion: (()->Void)?) {
+    fileprivate func renderDiff(_ oldState: NMessengerState, startIndex: Int, animation: UITableView.RowAnimation, completion: (()->Void)?) {
         
         //done animating
         let animated = animation != .none
@@ -673,7 +673,7 @@ extension NMessenger {
      - paramter toPosition: the position to scroll to
      - parameter completion: a block to be called after the content has been added
      */
-    public func addMessageToMessageGroup(_ message: GeneralMessengerCell, messageGroup: MessageGroup, scrollsToMessage: Bool, toPosition position: UITableViewScrollPosition?, completion: (()->Void)?) {
+    public func addMessageToMessageGroup(_ message: GeneralMessengerCell, messageGroup: MessageGroup, scrollsToMessage: Bool, toPosition position: UITableView.ScrollPosition?, completion: (()->Void)?) {
          messageGroup.addMessageToGroup(message, completion: {
             if scrollsToMessage {
                 if let position = position {
@@ -694,7 +694,7 @@ extension NMessenger {
      - parameter scrollsToLastMessage: A that indicates whether the tableview should scroll to the last message in the group
      - paramter toPosition: the position to scroll to
      */
-    public func removeMessageFromMessageGroup(_ message: GeneralMessengerCell, messageGroup: MessageGroup, scrollsToLastMessage: Bool, toPosition position: UITableViewScrollPosition?) {
+    public func removeMessageFromMessageGroup(_ message: GeneralMessengerCell, messageGroup: MessageGroup, scrollsToLastMessage: Bool, toPosition position: UITableView.ScrollPosition?) {
         self.removeMessageFromMessageGroup(message, messageGroup: messageGroup, scrollsToLastMessage: scrollsToLastMessage, toPosition: position, completion: nil)
     }
     
@@ -706,12 +706,12 @@ extension NMessenger {
      - paramter toPosition: the position to scroll to
      - parameter completion: a block to be called after the content has been removed
      */
-    public func removeMessageFromMessageGroup(_ message: GeneralMessengerCell, messageGroup: MessageGroup, scrollsToLastMessage: Bool, toPosition position: UITableViewScrollPosition?, completion: (()->Void)?) {
+    public func removeMessageFromMessageGroup(_ message: GeneralMessengerCell, messageGroup: MessageGroup, scrollsToLastMessage: Bool, toPosition position: UITableView.ScrollPosition?, completion: (()->Void)?) {
         
         //If it is the last message, remove it
         if self.hasMessage(messageGroup) {
             if messageGroup.messages.count == 1 && messageGroup.messages.first == message {
-                let animation = messageGroup.isIncomingMessage ? UITableViewRowAnimation.left : UITableViewRowAnimation.right
+                let animation = messageGroup.isIncomingMessage ? UITableView.RowAnimation.left : UITableView.RowAnimation.right
                 self.removeMessagesWithBlock([messageGroup], animation: animation, completion: { 
                     completion?()
                 })

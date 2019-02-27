@@ -61,7 +61,7 @@ open class ImageContentNode: ContentNode {
     {
         imageMessageNode.image = image
         imageMessageNode.clipsToBounds = true
-        imageMessageNode.contentMode = UIViewContentMode.scaleAspectFill
+        imageMessageNode.contentMode = UIView.ContentMode.scaleAspectFill
         self.imageMessageNode.accessibilityIdentifier = "imageNode"
         self.imageMessageNode.isAccessibilityElement = true
         self.addSubnode(imageMessageNode)
@@ -97,7 +97,7 @@ open class ImageContentNode: ContentNode {
      Override method from superclass
      */
     open override func messageNodeLongPressSelector(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.began {
+        if recognizer.state == UIGestureRecognizer.State.began {
             
             let touchLocation = recognizer.location(in: view)
             if self.imageMessageNode.frame.contains(touchLocation) {

@@ -38,9 +38,9 @@ open class MessageSentIndicator: GeneralMessengerCell {
             text.attributedText = NSAttributedString(
                 string: newValue != nil ? newValue! : "",
                 attributes: [
-                    NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
-                    NSAttributedStringKey.foregroundColor: UIColor.lightGray,
-                    NSAttributedStringKey.kern: -0.3
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
+                    NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                    NSAttributedString.Key.kern: -0.3
                 ])
             self.setNeedsLayout()
         } get {

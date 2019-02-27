@@ -22,7 +22,7 @@ open class ImageBubble : Bubble {
     /** Image 9-Patch used for bubble. When this is set, you will need to call setNeedsLayout on your message for changes to take effect if the bubble has already been drawn*/
     open var bubbleImage: UIImage?
     /** Image 9-Patch cut insets. When this is set, you will need to call setNeedsLayout on your message for changes to take effect if the bubble has already been drawn*/
-    open var cutInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+    open var cutInsets: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     
     // MARK: Initialisers
     
