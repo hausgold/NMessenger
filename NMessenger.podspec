@@ -65,7 +65,7 @@ NMessenger is a fast, lightweight messenger component built on AsyncDisplaykit a
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "8.2"
+  s.platform     = :ios, "10.2"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -136,5 +136,5 @@ NMessenger is a fast, lightweight messenger component built on AsyncDisplaykit a
   s.dependency "Texture", "2.8"
 
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
-  
+
 end
