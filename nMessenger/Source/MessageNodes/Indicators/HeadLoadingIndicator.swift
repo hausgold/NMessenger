@@ -23,9 +23,9 @@ open class HeadLoadingIndicator: GeneralMessengerCell {
         }
     }
     /** Animated spinner node*/
-    open let spinner = SpinnerNode()
+    public let spinner = SpinnerNode()
     /** Loading text node*/
-    open let text = ASTextNode()
+    public let text = ASTextNode()
     /** Sets the loading attributed text for the spinner. Defaults to *"Loading..."* */
     open var loadingAttributedText:NSAttributedString? {
         set {

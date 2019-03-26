@@ -355,7 +355,7 @@ open class NMessenger: UIView {
     open func removeTypingIndicator(_ indicator: GeneralMessengerCell, scrollsToLast: Bool, animated: Bool, completion: (()->Void)?) {
         waitForMessageLock {
             DispatchQueue.main.async {
-                if let index = self.state.typingIndicators.index(of: indicator){
+                if let index = self.state.typingIndicators.firstIndex(of: indicator){
 
                     self.state.typingIndicators.remove(at: index)
                     

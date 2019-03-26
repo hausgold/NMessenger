@@ -191,7 +191,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors =  [NSSortDescriptor(key: "creationDate", ascending: true)]
         let fetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
-        let lastAsset = fetchResult.lastObject as PHAsset!
+        let lastAsset = fetchResult.lastObject
         let requestOptions = PHImageRequestOptions()
         requestOptions.version = PHImageRequestOptionsVersion.current
         PHImageManager.default().requestImage(for: lastAsset!, targetSize: self.galleryImage.frame.size, contentMode: PHImageContentMode.aspectFill, options: requestOptions) { (image, info) -> Void in

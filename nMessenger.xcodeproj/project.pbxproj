@@ -1219,7 +1219,7 @@
 				TargetAttributes = {
 					616280241D8196F700D1F510 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 					F1418CE21D380B2400C404B5 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1242,6 +1242,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1822,7 +1823,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ebay.nMessenger-iOS";
 				PRODUCT_NAME = NMessenger;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1849,7 +1850,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ebay.nMessenger-iOS";
 				PRODUCT_NAME = NMessenger;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

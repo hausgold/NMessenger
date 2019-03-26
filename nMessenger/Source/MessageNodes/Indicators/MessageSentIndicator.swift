@@ -23,7 +23,7 @@ open class MessageSentIndicator: GeneralMessengerCell {
         }
     }
     /** Loading text node*/
-    open let text = ASTextNode()
+    public let text = ASTextNode()
     /** Sets the loading attributed text for the spinner. Defaults to *"Loading..."* */
     open var messageSentAttributedText:NSAttributedString? {
         set {
