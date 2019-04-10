@@ -93,6 +93,12 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
         self.removeObservers()
     }
     
+    // MARK: constants
+    
+    let iPhoneXScreenHeight: CGFloat = 1792.0
+    let heightDifferenceiPhoneX: CGFloat = 87.0
+    let heightDifferenceiPhone: CGFloat = 49.0
+    
     // MARK: Initialisers helper methods
     /**
      Adds observer for UIKeyboardWillChangeFrameNotification
@@ -199,21 +205,21 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
             let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions().rawValue
             let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
-            if endFrame?.origin.y >= UIScreen.main.bounds.size.height {
-                self.inputBarBottomSpacing.constant = 0
+            if endFrame?.origin.y >= self.view.bounds.size.height {
                 self.isKeyboardIsShown = false
+                self.inputBarBottomSpacing.constant = 0.0
             } else {
-                if self.inputBarBottomSpacing.constant == 48{
-                    self.inputBarBottomSpacing.constant -= endFrame?.size.height ?? 0.0
-                    
+                var inputBarBottomSpacingConstant : CGFloat = 0.0
+                if UIScreen.main.nativeBounds.height >= iPhoneXScreenHeight {
+                    if let h = endFrame?.size.height {
+                        inputBarBottomSpacingConstant = -h + heightDifferenceiPhoneX
+                    }
+                } else {
+                    if let h = endFrame?.size.height {
+                        inputBarBottomSpacingConstant = -h + heightDifferenceiPhone
+                    }
                 }
-                else
-                {
-                    self.inputBarBottomSpacing.constant = 0
-                    self.inputBarBottomSpacing.constant -= endFrame?.size.height ?? 0.0
-                    self.inputBarBottomSpacing.constant += 48
-                    
-                }
+                self.inputBarBottomSpacing.constant = inputBarBottomSpacingConstant
                 self.isKeyboardIsShown = true
             }
             
