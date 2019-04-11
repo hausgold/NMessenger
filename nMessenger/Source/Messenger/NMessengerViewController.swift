@@ -93,11 +93,6 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
         self.removeObservers()
     }
     
-    // MARK: constants
-    
-    let iPhoneXScreenHeight: CGFloat = 1792.0
-    let heightDifferenceiPhoneX: CGFloat = 87.0
-    let heightDifferenceiPhone: CGFloat = 49.0
     
     // MARK: Initialisers helper methods
     /**
@@ -210,14 +205,13 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
                 self.inputBarBottomSpacing.constant = 0.0
             } else {
                 var inputBarBottomSpacingConstant : CGFloat = 0.0
-                if UIScreen.main.nativeBounds.height >= iPhoneXScreenHeight {
-                    if let h = endFrame?.size.height {
-                        inputBarBottomSpacingConstant = -h + heightDifferenceiPhoneX
-                    }
-                } else {
-                    if let h = endFrame?.size.height {
-                        inputBarBottomSpacingConstant = -h + heightDifferenceiPhone
-                    }
+                var bottomEdge: CGFloat = 0.0
+                if #available(iOS 11.0, *) {
+                    bottomEdge = UIApplication.shared.delegate?.window!?.safeAreaInsets.bottom ?? 0.0;
+                }
+                if let h = endFrame?.size.height {
+                    let tabbar = UITabBar.init()
+                    inputBarBottomSpacingConstant = -h + bottomEdge + 49 // TODO: We need to find a way to get the UITabBar's height.
                 }
                 self.inputBarBottomSpacing.constant = inputBarBottomSpacingConstant
                 self.isKeyboardIsShown = true
