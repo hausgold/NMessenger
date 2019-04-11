@@ -210,7 +210,6 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
                     bottomEdge = UIApplication.shared.delegate?.window!?.safeAreaInsets.bottom ?? 0.0;
                 }
                 if let h = endFrame?.size.height {
-                    let tabbar = UITabBar.init()
                     inputBarBottomSpacingConstant = -h + bottomEdge + 49 // TODO: We need to find a way to get the UITabBar's height.
                 }
                 self.inputBarBottomSpacing.constant = inputBarBottomSpacingConstant
