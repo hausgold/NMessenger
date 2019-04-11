@@ -93,6 +93,7 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
         self.removeObservers()
     }
     
+    
     // MARK: Initialisers helper methods
     /**
      Adds observer for UIKeyboardWillChangeFrameNotification
@@ -199,21 +200,19 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
             let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions().rawValue
             let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
-            if endFrame?.origin.y >= UIScreen.main.bounds.size.height {
-                self.inputBarBottomSpacing.constant = 0
+            if endFrame?.origin.y >= self.view.bounds.size.height {
                 self.isKeyboardIsShown = false
+                self.inputBarBottomSpacing.constant = 0.0
             } else {
-                if self.inputBarBottomSpacing.constant == 48{
-                    self.inputBarBottomSpacing.constant -= endFrame?.size.height ?? 0.0
-                    
+                var inputBarBottomSpacingConstant : CGFloat = 0.0
+                var bottomEdge: CGFloat = 0.0
+                if #available(iOS 11.0, *) {
+                    bottomEdge = UIApplication.shared.delegate?.window!?.safeAreaInsets.bottom ?? 0.0;
                 }
-                else
-                {
-                    self.inputBarBottomSpacing.constant = 0
-                    self.inputBarBottomSpacing.constant -= endFrame?.size.height ?? 0.0
-                    self.inputBarBottomSpacing.constant += 48
-                    
+                if let h = endFrame?.size.height {
+                    inputBarBottomSpacingConstant = -h + bottomEdge + 49 // TODO: We need to find a way to get the UITabBar's height.
                 }
+                self.inputBarBottomSpacing.constant = inputBarBottomSpacingConstant
                 self.isKeyboardIsShown = true
             }
             

@@ -136,5 +136,4 @@ NMessenger is a fast, lightweight messenger component built on AsyncDisplaykit a
   s.dependency "Texture", "2.8"
 
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
-
 end
