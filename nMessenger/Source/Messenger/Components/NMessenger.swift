@@ -460,9 +460,14 @@ open class NMessenger: UIView {
                         self.state.cellBufferStartIndex = Int.max
                         self.state.cellBuffer = [GeneralMessengerCell]()
                         //scroll to the message
+                        var animated = false // We don't animate the refresh action.
+                        if messages.count == 1 {
+                            // If there's a new message it will appear animated.
+                            animated = true
+                        }
                         if scrollsToMessage {
                             if let indexPath = self.pickLastIndexPath() {
-                                self.scrollToIndex((indexPath as NSIndexPath).row, inSection: (indexPath as NSIndexPath).section, atPosition: .bottom, animated: true)
+                                self.scrollToIndex((indexPath as NSIndexPath).row, inSection: (indexPath as NSIndexPath).section, atPosition: .bottom, animated: animated)
                             }
                         }
                         //unlock the semaphore
